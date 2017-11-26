@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {  //, Logger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        toast("Hello")
+        applicationContext.toast("Message")
+
 
 //        toast("hello")
 
@@ -37,10 +40,10 @@ class MainActivity : AppCompatActivity() {  //, Logger {
 //        d("Hello")
     }
 
-    //Unit = void en Java pero devolviendo un objeto (la función)
-    private fun toast(message: String): Unit {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
+//    //Unit = void en Java pero devolviendo un objeto (la función)
+//    private fun toast(message: String): Unit {
+//        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+//    }
 }
 
 //interface Logger {

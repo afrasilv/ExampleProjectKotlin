@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.afrasilv.exampleprojectkotlin
 
 import android.support.v7.widget.RecyclerView
@@ -10,7 +12,8 @@ import com.squareup.picasso.Picasso
 
 class MediaAdapter(val items: List<MediaItem>) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.view_media_item, parent, false)
+//        val v =LayoutInflater.from(parent.context).inflate(R.layout.view_media_item, parent, false)
+        val v = parent.inflate(R.layout.view_media_item)
         return ViewHolder(v)
     }
 
@@ -28,7 +31,9 @@ class MediaAdapter(val items: List<MediaItem>) : RecyclerView.Adapter<MediaAdapt
 
         fun bind(item: MediaItem){
             title.text = item.title
-            Picasso.with(image.context).load(item.thumbUrl).into(image)
+//            Picasso.with(image.context).load(item.thumbUrl).into(image)
+            image.loadUrl(item.thumbUrl)
+            toast("Hello")
         }
     }
 }
