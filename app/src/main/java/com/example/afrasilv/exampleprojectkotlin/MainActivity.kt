@@ -11,28 +11,30 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.w3c.dom.Text
 
-class MainActivity : AppCompatActivity(), Logger {
+class MainActivity : AppCompatActivity() {  //, Logger {
 
 //    override val tag = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 //        toast("hello")
 
-        val tv = this.findViewById<TextView>(R.id.textView) as TextView //as para hacer casting
-        tv.setText("Hello Kotlin")
-        tv.text = "Hello Kotlin" //igual que lo de arriba
-        toast("hello $textView, how are you?")
-        toast("hello ${textView.text}, how are you?") //si es un objeto más complejo, tendríamos que usar los corchetes
-
-
-        val etv = findViewById<EditText>(R.id.message) as EditText
-        val button = findViewById<Button>(R.id.button) as Button
-
-        button.setOnClickListener { toast("Hello ${etv.text}") }
-
-        d("Hello")
+//        val tv = this.findViewById<TextView>(R.id.textView) as TextView //as para hacer casting
+//        tv.setText("Hello Kotlin")
+//        tv.text = "Hello Kotlin" //igual que lo de arriba
+//        toast("hello $textView, how are you?")
+//        toast("hello ${textView.text}, how are you?") //si es un objeto más complejo, tendríamos que usar los corchetes
+//
+//
+//        val etv = findViewById<EditText>(R.id.message) as EditText
+//        val button = findViewById<Button>(R.id.button) as Button
+//
+//        button.setOnClickListener { toast("Hello ${etv.text}") }
+//
+//        d("Hello")
     }
 
     //Unit = void en Java pero devolviendo un objeto (la función)
@@ -41,14 +43,13 @@ class MainActivity : AppCompatActivity(), Logger {
     }
 }
 
-interface Logger {
-
-    val tag: String
-        get() = javaClass.simpleName // si no sobreescribimos el get para obtener el nombre, se lo tenemos que pasar en la clase como está arriba
-
-    fun d(message: String) = Log.d(tag, message)
-}
-
+//interface Logger {
+//
+//    val tag: String
+//        get() = javaClass.simpleName // si no sobreescribimos el get para obtener el nombre, se lo tenemos que pasar en la clase como está arriba
+//
+//    fun d(message: String) = Log.d(tag, message)
+//}
 
 
 /*
