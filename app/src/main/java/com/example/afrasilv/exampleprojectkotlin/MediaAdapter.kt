@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.view_media_item.view.*
 
 class MediaAdapter(val items: List<MediaItem>) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,14 +27,18 @@ class MediaAdapter(val items: List<MediaItem>) : RecyclerView.Adapter<MediaAdapt
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val title = view.findViewById<TextView>(R.id.media_title) as TextView
-        val image = view.findViewById<ImageView>(R.id.media_image) as ImageView
+//        val title = view.findViewById<TextView>(R.id.media_title)
+//        val image = view.findViewById<ImageView>(R.id.media_thumb)
+//        val videoIndicator = view.findViewById<ImageView>(R.id.media_video_indicator)
 
-        fun bind(item: MediaItem){
-            title.text = item.title
+        fun bind(item: MediaItem) = with(itemView) {
+            media_title.text = item.title
 //            Picasso.with(image.context).load(item.thumbUrl).into(image)
-            image.loadUrl(item.thumbUrl)
-            toast("Hello")
+            media_thumb.loadUrl(item.thumbUrl)
+            media_video_indicator.visibility = when (item.type) {
+                MediaItem.Type.VIDEO -> View.VISIBLE
+                MediaItem.Type.PHOTO -> View.GONE
+            }
         }
     }
 }

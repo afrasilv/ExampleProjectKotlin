@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {  //, Logger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        recycler.adapter = MediaAdapter(emptyList())
 
         toast("Hello")
         applicationContext.toast("Message")
