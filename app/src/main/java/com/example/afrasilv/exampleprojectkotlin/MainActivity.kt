@@ -18,7 +18,14 @@ class MainActivity : AppCompatActivity() {  //, Logger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recycler.adapter = MediaAdapter(emptyList())
+        recycler.adapter = MediaAdapter(getMedia()) { (title) -> toast(title)}
+
+
+        val textView = TextView(this).apply2 {
+            text = "Hello"
+            textSize = 20f
+        }
+
 
         toast("Hello")
         applicationContext.toast("Message")
@@ -45,6 +52,11 @@ class MainActivity : AppCompatActivity() {  //, Logger {
 //    private fun toast(message: String): Unit {
 //        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 //    }
+}
+
+fun <T> T.apply2(f: T.() -> Unit): T {
+    f()
+    return this
 }
 
 //interface Logger {

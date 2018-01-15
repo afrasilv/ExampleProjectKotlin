@@ -11,7 +11,10 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_media_item.view.*
 
-class MediaAdapter(val items: List<MediaItem>) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
+class MediaAdapter(val items: List<MediaItem>, val listener: (MediaItem) -> Unit)
+    : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 //        val v =LayoutInflater.from(parent.context).inflate(R.layout.view_media_item, parent, false)
         val v = parent.inflate(R.layout.view_media_item)
@@ -19,7 +22,9 @@ class MediaAdapter(val items: List<MediaItem>) : RecyclerView.Adapter<MediaAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        val item = items[position]
+        holder.bind(item)
+        holder.itemView.setOnClickListener { listener(item)}
     }
 
     override fun getItemCount(): Int = items.size
